@@ -1,0 +1,48 @@
+export default [
+  { _id: '1', user: '123', course: '1234' },
+  { _id: '2', user: '234', course: '1234' },
+  { _id: '3', user: '345', course: '1234' },
+  { _id: '4', user: '456', course: '1234' },
+  { _id: '5', user: '678', course: '1234' },
+
+  { _id: '6', user: '234', course: '5610' },
+  { _id: '7', user: '789', course: '5610' },
+  { _id: '8', user: '890', course: '5610' },
+  { _id: '9', user: '123', course: '5610' },
+  { _id: '10', user: '678', course: '5610' },
+  { _id: '11', user: '901', course: '5610' },
+
+  { _id: '12', user: '345', course: '5200' },
+  { _id: '13', user: '456', course: '5200' },
+  { _id: '14', user: '567', course: '5200' },
+  { _id: '15', user: '134', course: '5200' },
+  { _id: '16', user: '145', course: '5200' },
+
+  { _id: '17', user: '789', course: '5500' },
+  { _id: '18', user: '890', course: '5500' },
+  { _id: '19', user: '012', course: '5500' },
+  { _id: '20', user: '156', course: '5500' },
+  { _id: '21', user: '167', course: '5500' },
+  { _id: '22', user: '189', course: '5500' },
+
+  { _id: '23', user: '123', course: '5800' },
+  { _id: '24', user: '178', course: '5800' },
+  { _id: '25', user: '190', course: '5800' },
+  { _id: '26', user: '201', course: '5800' },
+  { _id: '27', user: '212', course: '5800' },
+
+  { _id: '28', user: '567', course: '5340' },
+  { _id: '29', user: '901', course: '5340' },
+  { _id: '30', user: '145', course: '5340' },
+  { _id: '31', user: '167', course: '5340' },
+  { _id: '32', user: '134', course: '5340' },
+  { _id: '33', user: '223', course: '5340' },
+
+  { _id: '34', user: '890', course: '5100' },
+  { _id: '35', user: '012', course: '5100' },
+  { _id: '36', user: '178', course: '5100' },
+  { _id: '37', user: '201', course: '5100' },
+  { _id: '38', user: '212', course: '5100' },
+  { _id: '39', user: '223', course: '5100' },
+  { _id: '40', user: '189', course: '5100' },
+]
