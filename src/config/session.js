@@ -3,10 +3,14 @@ import MongoStore from 'connect-mongo'
 import { env } from './env.js'
 import 'dotenv/config'
 
-const uri = env.MONGODB_URI.replace(
-  '${MONGODB_PASS}',
-  process.env.MONGODB_PASS || '',
-)
+const CROSS_SITE = env.isProd || process.env.CROSS_SITE_COOKIES === 'true'
+
+const mongoUrl = env.MONGODB_URI.includes('${MONGODB_PASS}')
+  ? env.MONGODB_URI.replace(
+      '${MONGODB_PASS}',
+      encodeURIComponent(process.env.MONGODB_PASS || ''),
+    )
+  : env.MONGODB_URI
 
 export const sessionMiddleware = session({
   name: 'sid',
@@ -14,14 +18,14 @@ export const sessionMiddleware = session({
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
-    mongoUrl: uri,
+    mongoUrl,
     stringify: false,
     touchAfter: 24 * 3600,
   }),
   cookie: {
     httpOnly: true,
-    sameSite: 'lax',
-    secure: env.isProd,
+    sameSite: CROSS_SITE ? 'none' : 'lax',
+    secure: CROSS_SITE,
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
 })

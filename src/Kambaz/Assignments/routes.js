@@ -7,7 +7,7 @@ export default function assignmentroutes(app) {
   app.get(
     '/api/courses/:courseid/assignments',
     asyncHandler(async (req, res) => {
-      const rows = await dao.findassignmentsforcourse(req.params.courseid)
+      const rows = await dao.findAssignmentsForCourse(req.params.courseid)
       res.json(rows)
     }),
   )
@@ -16,7 +16,7 @@ export default function assignmentroutes(app) {
   app.get(
     '/api/assignments/:assignmentid',
     asyncHandler(async (req, res) => {
-      const row = await dao.findassignmentbyid(req.params.assignmentid)
+      const row = await dao.findAssignmentById(req.params.assignmentid)
       if (!row) return res.sendstatus(404)
       res.json(row)
     }),
@@ -28,7 +28,7 @@ export default function assignmentroutes(app) {
     requireAuth,
     asyncHandler(async (req, res) => {
       const payload = { ...req.body, course: req.params.courseid }
-      const created = await dao.createassignment(payload)
+      const created = await dao.createAssignment(payload)
       res.status(201).json(created)
     }),
   )
@@ -38,7 +38,7 @@ export default function assignmentroutes(app) {
     '/api/assignments/:assignmentid',
     requireAuth,
     asyncHandler(async (req, res) => {
-      const updated = await dao.updateassignment(
+      const updated = await dao.updateAssignment(
         req.params.assignmentid,
         req.body,
       )
@@ -52,7 +52,7 @@ export default function assignmentroutes(app) {
     '/api/assignments/:assignmentid',
     requireAuth,
     asyncHandler(async (req, res) => {
-      const result = await dao.deleteassignment(req.params.assignmentid)
+      const result = await dao.deleteAssignment(req.params.assignmentid)
       res.json(result)
     }),
   )

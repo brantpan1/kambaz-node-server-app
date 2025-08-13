@@ -9,11 +9,13 @@ import { EnrollmentModel } from '../Kambaz/Enrollments/model.js'
 
 export async function connectMongo() {
   mongoose.set('strictQuery', true)
-  const uri = env.MONGODB_URI.replace(
-    '${MONGODB_PASS}',
-    process.env.MONGODB_PASS || '',
-  )
-  console.log(uri)
+  const uri = env.MONGODB_URI.includes('${MONGODB_PASS}')
+    ? env.MONGODB_URI.replace(
+        '${MONGODB_PASS}',
+        encodeURIComponent(process.env.MONGODB_PASS || ''),
+      )
+    : env.MONGODB_URI
+
   await mongoose.connect(uri, {
     serverSelectionTimeoutMS: 8000,
   })
@@ -24,5 +26,5 @@ export async function connectMongo() {
     AssignmentModel.init(),
     EnrollmentModel.init(),
   ])
-  console.log('Mongo connected', uri.split('@')[1])
+  console.log('Mongo connected', uri.split('@')[1] || uri)
 }
