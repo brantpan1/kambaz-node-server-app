@@ -19,6 +19,7 @@ import EnrollmentRoutes from './Kambaz/Enrollments/routes.js'
 import ModuleRoutes from './Kambaz/Modules/routes.js'
 import AssignmentRoutes from './Kambaz/Assignments/routes.js'
 import Hello from './Hello.js'
+import QuizRoutes from './Kambaz/Quizzes/routes.js'
 
 const start = async () => {
   await connectMongo()
@@ -50,6 +51,7 @@ CourseRoutes(app)
 EnrollmentRoutes(app)
 ModuleRoutes(app)
 AssignmentRoutes(app)
+QuizRoutes(app)
 Hello(app)
 
 app.use(notFound)

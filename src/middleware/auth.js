@@ -5,10 +5,11 @@ export function requireAuth(req, res, next) {
   next()
 }
 
-export function requireRole(...roles) {
+export function requireRole(...allowed) {
   return (req, res, next) => {
-    const role = req.session?.currentUser?.role
-    if (!role || !roles.includes(role)) return res.sendStatus(403)
+    const role = req.user?.role || req.session?.currentUser?.role
+    if (!role) return res.sendStatus(401)
+    if (!allowed.includes(role)) return res.sendStatus(403)
     next()
   }
 }

@@ -18,6 +18,7 @@ export async function connectMongo() {
 
   await mongoose.connect(uri, {
     serverSelectionTimeoutMS: 8000,
+    autoIndex: true,
   })
   await Promise.all([
     UserModel.init(),
